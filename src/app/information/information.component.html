@@ -1,0 +1,9 @@
+<h2>A list of all the pages</h2>
+<ul class = "information">
+  <li *ngFor="let info of information"
+      (click)="onSelect(info)"
+      [class.selected]= "info === selectedInfo">
+    <span class = "option">{{info.name}}</span>
+  </li>
+</ul>
+<app-info-detail [info] = "selectedInfo"></app-info-detail>
