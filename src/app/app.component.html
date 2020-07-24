@@ -1,2 +1,31 @@
-<h1>{{title}}</h1>
-<app-information></app-information>
+<div [class.example-is-mobile]="mobileQuery.matches">
+  <div class="fixed-nav-bar">
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>home</mat-icon>
+      </button>
+      <a routerLink="/dashboard" style="text-decoration: none; color: white">
+        <h1 class="headline">{{title}}</h1>
+      </a>
+    </mat-toolbar>
+  </div>
+  <div style="padding-top: 50px">
+    <mat-sidenav-container [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'over'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"
+                   [style.width.%]="mobileQuery.matches ? 90 : 20">
+        <app-information></app-information>
+      </mat-sidenav>
+
+      <mat-sidenav-content>
+        <div style="width:50%; text-align:center;margin: 0 auto"
+             [style.width.%]="mobileQuery.matches ? 90 : 50">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</div>

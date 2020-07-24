@@ -1,9 +1,10 @@
-<h2>A list of all the pages</h2>
-<ul class = "information">
-  <li *ngFor="let info of information"
-      (click)="onSelect(info)"
-      [class.selected]= "info === selectedInfo">
-    <span class = "option">{{info.name}}</span>
+<mat-nav-list>
+  <li *ngFor="let info of information" style="padding-top: 2em">
+    <a routerLink="/detail/{{info.name}}"
+       class="mat-title"
+       style="color: white;
+          text-decoration: none">
+      {{info.name}}
+    </a>
   </li>
-</ul>
-<app-info-detail [info] = "selectedInfo"></app-info-detail>
+</mat-nav-list>

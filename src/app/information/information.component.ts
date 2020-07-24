@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Information} from '../information';
-import { INFORMATION} from '../mock-page-text';
+import { InfoService} from '../info.service';
 
 @Component({
   selector: 'app-information',
@@ -8,15 +8,16 @@ import { INFORMATION} from '../mock-page-text';
   styleUrls: ['./information.component.css']
 })
 export class InformationComponent implements OnInit {
-  information = INFORMATION;
+  information: Information[];
+  constructor(private infoService: InfoService) { }
 
-  constructor() { }
+  getInfo(): void {
+    this.infoService.getInfos()
+      .subscribe(information => this.information = information);
+  }
 
   ngOnInit(): void {
-  }
-  selectedInfo: Information;
-  onSelect(info: Information): void {
-    this.selectedInfo = info;
+    this.getInfo();
   }
 
 }

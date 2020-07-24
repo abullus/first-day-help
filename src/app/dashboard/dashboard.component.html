@@ -1,0 +1,17 @@
+<div>
+  <a *ngFor="let info of information"
+     routerLink="/detail/{{info.name}}"
+     style="text-decoration: none">
+    <span >
+    <mat-card style="margin: 2em">
+      <mat-card-title>{{info.name}}</mat-card-title>
+      <img mat-card-image src="{{info.photo}}">
+      <mat-card-content>
+        <p>
+          {{info.short_text}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+      </span>
+  </a>
+</div>

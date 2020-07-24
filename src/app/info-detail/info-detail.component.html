@@ -1,4 +1,19 @@
-<div *ngIf = "info">
-  <h2>{{info.name | uppercase}}</h2>
-  <div><span>{{info.text}}</span></div>
+<div *ngIf="info" class="mat-app-background">
+  <h2 style="padding-top: 1em">{{info.name | uppercase}}</h2>
+</div>
+<div>
+  <span *ngFor="let data of datas">
+    <mat-expansion-panel hideToggle style="margin: 2em">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{data.name}}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{data.short_text}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <p style="text-align: left">{{data.long_text}}</p>
+</mat-expansion-panel>
+
+  </span>
 </div>
